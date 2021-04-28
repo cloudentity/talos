@@ -1,4 +1,4 @@
-module github.com/talos-systems/docgen
+module github.com/cloudentity/talos/hack/docgenn
 
 go 1.13
 
