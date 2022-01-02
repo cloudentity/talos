@@ -315,22 +315,27 @@ func collectFields(s *structType) (fields []*Field) {
 			}
 		}
 
-		if f.Doc == nil {
-			log.Fatalf("field %q is missing a documentation", f.Names[0].Name)
-		}
-
 		if strings.Contains(f.Doc.Text(), "docgen:nodoc") {
 			continue
 		}
-
-		name := f.Names[0].Name
 
 		fieldType := formatFieldType(f.Type)
 		fieldTypeRef := getFieldType(f.Type)
 
 		tag := reflect.StructTag(strings.Trim(f.Tag.Value, "`"))
 		yamlTag := tag.Get("yaml")
+
+		if yamlTag == ",inline" {
+			// This is an embedded struct.
+			continue
+		}
+
 		yamlTag = strings.Split(yamlTag, ",")[0]
+
+		if f.Doc == nil {
+			log.Fatalf("field %q is missing a documentation", f.Names[0].Name)
+		}
+		name := f.Names[0].Name
 
 		if yamlTag == "" {
 			yamlTag = strings.ToLower(yamlTag)
