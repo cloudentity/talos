@@ -326,7 +326,8 @@ func collectFields(s *structType) (fields []*Field) {
 		yamlTag := tag.Get("yaml")
 
 		if yamlTag == ",inline" {
-			// This is an embedded struct.
+			// This is an inline embedded struct, add void field to maintain fields numers.
+			fields = append(fields, &Field{Text: &Text{}})
 			continue
 		}
 
