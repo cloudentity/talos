@@ -37,7 +37,7 @@ require (
 	github.com/dustin/go-humanize v1.0.0
 	github.com/elazarl/goproxy v0.0.0-20210110162100-a92cc753f88e // indirect
 	github.com/emicklei/dot v0.15.0
-	github.com/emicklei/go-restful v2.15.0+incompatible // indirect
+	github.com/emicklei/go-restful v2.16.0+incompatible // indirect
 	github.com/evanphx/json-patch v4.9.0+incompatible
 	github.com/fatih/color v1.10.0
 	github.com/firecracker-microvm/firecracker-go-sdk v0.22.0
